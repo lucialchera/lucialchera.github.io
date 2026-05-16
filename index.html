@@ -10,13 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* 1. SEKTÖREL RENK PALETİ VE RESET */
         :root {
-            --bg-main: #030712;       /* Ultra Derin Siyah/Mavi */
-            --bg-surface: #0b1329;    /* Kart Arka Planları */
-            --accent-glow: #38bdf8;   /* Neon Mavi Detaylar */
-            --text-primary: #f3f4f6;  /* Parlak Beyaz */
-            --text-secondary: #9ca3af;/* Soft Gri */
+            --bg-main: #030712;
+            --bg-surface: #0b1329;
+            --accent-glow: #38bdf8;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
             --border-line: rgba(255, 255, 255, 0.04);
         }
 
@@ -35,7 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* 2. GELİŞMİŞ ARKA PLAN EFEKTLERİ */
         .ambient-glow-1 {
             position: absolute;
             top: -10%;
@@ -58,7 +56,6 @@
             pointer-events: none;
         }
 
-        /* 3. NAVİGASYON (ÜST MENÜ) */
         nav {
             position: fixed;
             top: 0;
@@ -104,7 +101,6 @@
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
         }
 
-        /* 4. ANA GİRİŞ ALANI (HERO SECTION) */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -149,7 +145,6 @@
             max-width: 540px;
         }
 
-        /* Buton Tasarımları */
         .btn-container {
             display: flex;
             gap: 20px;
@@ -166,7 +161,7 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: Ball 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .btn:hover {
@@ -175,20 +170,6 @@
             box-shadow: 0 15px 30px rgba(56, 189, 248, 0.2);
         }
 
-        .btn-alt {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-line);
-        }
-
-        .btn-alt:hover {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: var(--accent-glow);
-            transform: translateY(-3px);
-            box-shadow: none;
-        }
-
-        /* Sağ Taraf - Profil Alanı */
         .hero-display {
             display: flex;
             justify-content: center;
@@ -211,7 +192,6 @@
             transition: filter 0.4s ease;
         }
 
-        /* 5. GENİŞLETİLMİŞ İÇERİK ALANLARI */
         section {
             padding: 8rem 10%;
             max-width: 1400px;
@@ -241,7 +221,6 @@
             color: #fff;
         }
 
-        /* Hakkımda Detaylı Düzen */
         .about-layout {
             display: grid;
             grid-template-columns: 1.3fr 0.7fr;
@@ -279,7 +258,6 @@
             font-size: 1.2rem;
         }
 
-        /* Sektörel Kart Düzeni (Mimariler) */
         .architecture-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -319,7 +297,6 @@
             line-height: 1.7;
         }
 
-        /* 6. ALT BİLGİ (FOOTER) */
         footer {
             background: #02040a;
             padding: 4rem 10%;
@@ -335,7 +312,6 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* RESPONSIVE (MOBİL UYUMLULUK) */
         @media (max-width: 968px) {
             .hero-grid, .about-layout {
                 grid-template-columns: 1fr;
@@ -370,10 +346,9 @@
             <div class="hero-text">
                 <h2>Sistem Tasarımı & Backend</h2>
                 <h1>Verimli Kod, Güçlü Mimari</h1>
-                <p>Büyük kitlelerin etkileşime geçtiği sistemlerin arkasındaki mantığı çözmeyi seviyorum. API entegrasyonları, sunucu optimizasyonları ve Discord backend mimarileri üzerine yoğunlaşıyorum.</p>
+                <p>Büyük kitlelerin etkileşime geçtiği sistemlerin arkasındaki mantığı çözmeyi seviyorum. API entegrasyonları, sunucu optimizasyonları and Discord backend mimarileri üzerine yoğunlaşıyorum.</p>
                 <div class="btn-container">
-                    <a href="https://github.com/lucialchera" target="_blank" class="btn"><i class="fab fa-github"></i> Depolarımı İncele</a>
-                    <a href="#about" class="btn btn-alt">Gelişim Yolculuğum</a>
+                    <a href="#about" class="btn">Gelişim Yolculuğum <i class="fas fa-arrow-down"></i></a>
                 </div>
             </div>
             <div class="hero-display">
