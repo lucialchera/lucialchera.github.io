@@ -3,88 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alchera | Developer Portfolyo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Alchera | Yazılım Geliştirme ve Sistem Mimarisi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        /* Temel ve Kurumsal Reset */
+        /* 1. SEKTÖREL RENK PALETİ VE RESET */
+        :root {
+            --bg-main: #030712;       /* Ultra Derin Siyah/Mavi */
+            --bg-surface: #0b1329;    /* Kart Arka Planları */
+            --accent-glow: #38bdf8;   /* Neon Mavi Detaylar */
+            --text-primary: #f3f4f6;  /* Parlak Beyaz */
+            --text-secondary: #9ca3af;/* Soft Gri */
+            --border-line: rgba(255, 255, 255, 0.04);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
         }
-        
+
         body {
-            background-color: #090d16;
-            color: #e2e8f0;
-            line-height: 1.7;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* Seçim Rengi */
-        ::selection {
-            background: rgba(56, 189, 248, 0.2);
-            color: #38bdf8;
+        /* 2. GELİŞMİŞ ARKA PLAN EFEKTLERİ */
+        .ambient-glow-1 {
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.04) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
         }
 
-        /* Modern Navigasyon */
+        .ambient-glow-2 {
+            position: absolute;
+            top: 60%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.03) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* 3. NAVİGASYON (ÜST MENÜ) */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(9, 13, 22, 0.8);
-            backdrop-filter: blur(12px);
+            background: rgba(3, 7, 18, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 10%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border-line);
             z-index: 1000;
         }
 
         .logo {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #fff;
             letter-spacing: -0.5px;
+            color: var(--text-primary);
         }
 
         .logo span {
-            color: #38bdf8;
+            color: var(--accent-glow);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 35px;
         }
 
         .nav-links a {
-            color: #94a3b8;
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #38bdf8;
+            color: var(--accent-glow);
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
         }
 
-        /* Geniş Giriş (Hero) Alanı */
+        /* 4. ANA GİRİŞ ALANI (HERO SECTION) */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             padding: 0 10%;
-            background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+            position: relative;
+            z-index: 1;
         }
 
-        .hero-container {
+        .hero-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
             width: 100%;
             max-width: 1200px;
@@ -92,332 +125,313 @@
         }
 
         .hero-text h2 {
-            color: #38bdf8;
-            font-size: 1.1rem;
+            color: var(--accent-glow);
+            font-size: 0.95rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
+            letter-spacing: 2.5px;
+            margin-bottom: 1.2rem;
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             color: #fff;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
-
-        /* Profesyonel Yazı Efekti */
-        .typing-wrapper {
-            font-size: 1.5rem;
-            color: #94a3b8;
-            font-weight: 400;
+            line-height: 1.15;
             margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .typing-text {
-            color: #fff;
-            font-weight: 600;
-            border-right: 2px solid #38bdf8;
-            white-space: nowrap;
-            overflow: hidden;
-            width: 0;
-            animation: type 4s steps(40, end) infinite, blink 0.75s step-end infinite;
-        }
-
-        @keyframes type {
-            0% { width: 0 }
-            40% { width: 100% }
-            80% { width: 100% }
-            100% { width: 0 }
-        }
-
-        @keyframes blink {
-            from, to { border-color: transparent }
-            50% { border-color: #38bdf8 }
+            letter-spacing: -1.5px;
+            font-weight: 700;
         }
 
         .hero-text p {
-            font-size: 1.1rem;
-            color: #64748b;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
             margin-bottom: 2.5rem;
-            max-width: 550px;
+            max-width: 540px;
         }
 
-        .hero-avatar {
+        /* Buton Tasarımları */
+        .btn-container {
             display: flex;
-            justify-content: center;
-        }
-
-        .profile-img {
-            width: 280px;
-            height: 280px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: #111726;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .profile-img:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: #38bdf8;
-            box-shadow: 0 30px 60px rgba(56, 189, 248, 0.1);
-        }
-
-        /* Buton Grubu */
-        .btn-group {
-            display: flex;
-            gap: 15px;
+            gap: 20px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: #38bdf8;
-            color: #090d16;
-            padding: 0.9rem 2rem;
+            gap: 12px;
+            background: var(--text-primary);
+            color: var(--bg-main);
+            padding: 1rem 2.2rem;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
+            transition: Ball 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .btn:hover {
-            background: #0ea5e9;
-            transform: translateY(-2px);
+            background: var(--accent-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(56, 189, 248, 0.2);
         }
 
-        .btn-secondary {
-            background: #111726;
-            color: #f1f5f9;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .btn-alt {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-line);
         }
 
-        .btn-secondary:hover {
-            background: #1e293b;
-            border-color: #38bdf8;
+        .btn-alt:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: var(--accent-glow);
+            transform: translateY(-3px);
+            box-shadow: none;
         }
 
-        /* İstatistik Paneli */
-        .stats-bar {
-            background: #111726;
-            border-y: 1px solid rgba(255, 255, 255, 0.03);
-            padding: 3rem 10%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
+        /* Sağ Taraf - Profil Alanı */
+        .hero-display {
+            display: flex;
+            justify-content: center;
         }
 
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: #38bdf8;
-            font-weight: 700;
+        .avatar-frame {
+            position: relative;
+            padding: 12px;
+            background: rgba(11, 19, 41, 0.5);
+            border: 1px solid var(--border-line);
+            border-radius: 28px;
         }
 
-        .stat-item p {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-top: 0.25rem;
+        .avatar-frame img {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.4s ease;
         }
 
-        /* Geniş İçerik Alanları */
+        /* 5. GENİŞLETİLMİŞ İÇERİK ALANLARI */
         section {
-            padding: 7rem 10%;
+            padding: 8rem 10%;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        .section-header {
-            margin-bottom: 4rem;
+        .section-meta {
+            margin-bottom: 4.5rem;
         }
 
-        .section-header h3 {
-            color: #38bdf8;
-            font-size: 0.9rem;
+        .section-meta span {
+            color: var(--accent-glow);
+            font-size: 0.85rem;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
+            display: block;
             margin-bottom: 0.5rem;
         }
 
-        .section-header h2 {
-            font-size: 2.2rem;
+        .section-meta h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -1px;
             color: #fff;
-            letter-spacing: -0.5px;
         }
 
-        /* Odak Alanları / Kartlar */
-        .grid-cards {
+        /* Hakkımda Detaylı Düzen */
+        .about-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 60px;
+        }
+
+        .about-rich-text p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.8rem;
+        }
+
+        .focus-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .focus-list li {
+            font-size: 1rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-surface);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-line);
+        }
+
+        .focus-list i {
+            color: var(--accent-glow);
+            font-size: 1.2rem;
+        }
+
+        /* Sektörel Kart Düzeni (Mimariler) */
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 30px;
         }
 
-        .card {
-            background: #111726;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
+        .arch-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 20px;
+            padding: 3rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .arch-card:hover {
             border-color: rgba(56, 189, 248, 0.2);
-            background: #151d30;
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(56, 189, 248, 0.08);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #38bdf8;
-            font-size: 1.5rem;
+        .card-head {
+            font-size: 2.2rem;
+            color: var(--accent-glow);
             margin-bottom: 1.5rem;
         }
 
-        .card h4 {
-            font-size: 1.25rem;
+        .arch-card h3 {
+            font-size: 1.35rem;
             color: #fff;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
-        .card p {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .arch-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
         }
 
-        /* Footer */
+        /* 6. ALT BİLGİ (FOOTER) */
         footer {
-            background: #060910;
-            padding: 3rem 10%;
+            background: #02040a;
+            padding: 4rem 10%;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
-            color: #475569;
+            border-top: 1px solid var(--border-line);
+            color: #4b5563;
             font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Responsive Düzenleme */
+        footer p {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* RESPONSIVE (MOBİL UYUMLULUK) */
         @media (max-width: 968px) {
-            .hero-container {
+            .hero-grid, .about-layout {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 40px;
             }
-            .hero-text h1 { font-size: 2.5rem; }
-            .typing-wrapper { justify-content: center; }
-            .hero-text p { margin: 0 auto 2rem auto; }
-            .btn-group { justify-content: center; }
-            .profile-img { width: 220px; height: 220px; }
+            .hero-text h1 { font-size: 2.6rem; }
+            .hero-text p { margin-left: auto; margin-right: auto; }
+            .btn-container { justify-content: center; }
+            .focus-list { grid-template-columns: 1fr; }
             nav { padding: 1.2rem 5%; }
             section { padding: 5rem 5%; }
+            .avatar-frame img { width: 240px; height: 240px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+
     <nav>
         <div class="logo">ALCHERA<span>.</span></div>
         <ul class="nav-links">
             <li><a href="#home">Giriş</a></li>
-            <li><a href="#focus">Çalışmalarım</a></li>
-            <li><a href="#vision">Vizyon</a></li>
+            <li><a href="#about">Mühendislik</a></li>
+            <li><a href="#architecture">Altyapı</a></li>
         </ul>
     </nav>
 
     <section class="hero" id="home">
-        <div class="hero-container">
+        <div class="hero-grid">
             <div class="hero-text">
-                <h2>Yazılım ve Geliştirme</h2>
-                <h1>Merhaba, Ben Alchera</h1>
-                <div class="typing-wrapper">
-                    <span>Ben bir</span>
-                    <div class="typing-text">Discord Bot Geliştiricisiyim.</div>
-                </div>
-                <p>Teknolojinin arkasındaki mimariyi çözmek ve temiz yapılar inşa etmek için buradayım. Modern web teknolojileri ve backend sistemleri üzerine odaklanıyorum.</p>
-                <div class="btn-group">
-                    <a href="https://github.com/lucialchera" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub Profilim</a>
-                    <a href="#focus" class="btn btn-secondary">Projeleri İncele</a>
+                <h2>Sistem Tasarımı & Backend</h2>
+                <h1>Verimli Kod, Güçlü Mimari</h1>
+                <p>Büyük kitlelerin etkileşime geçtiği sistemlerin arkasındaki mantığı çözmeyi seviyorum. API entegrasyonları, sunucu optimizasyonları ve Discord backend mimarileri üzerine yoğunlaşıyorum.</p>
+                <div class="btn-container">
+                    <a href="https://github.com/lucialchera" target="_blank" class="btn"><i class="fab fa-github"></i> Depolarımı İncele</a>
+                    <a href="#about" class="btn btn-alt">Gelişim Yolculuğum</a>
                 </div>
             </div>
-            <div class="hero-avatar">
-                <img src="https://github.com/lucialchera.png" alt="Alchera" class="profile-img">
+            <div class="hero-display">
+                <div class="avatar-frame">
+                    <img src="https://github.com/lucialchera.png" alt="Alchera">
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="stats-bar">
-        <div class="stat-item">
-            <h3>01</h3>
-            <p>Aktif Proje</p>
-        </div>
-        <div class="stat-item">
-            <h3>%100</h3>
-            <p>Öğrenme İstediği</p>
-        </div>
-        <div class="stat-item">
-            <h3>2026</h3>
-            <p>Başlangıç Yılı</p>
-        </div>
-    </div>
-
-    <section id="focus">
-        <div class="section-header">
-            <h3>Neler Yapıyorum?</h3>
-            <h2>Odaklandığım Teknolojiler</h2>
+    <section id="about">
+        <div class="section-meta">
+            <span>Vizyoner Yaklaşım</span>
+            <h2>Yazılıma Bakış Açım ve İlkelerim</h2>
         </div>
         
-        <div class="grid-cards">
-            <div class="card">
-                <div class="card-icon"><i class="fab fa-discord"></i></div>
-                <h4>Discord Bot Mimarisi</h4>
-                <p>Kullanıcı etkileşimlerini otomatize eden, sunucu yönetimini kolaylaştıran modern ve optimize backend sistemleri geliştiriyorum.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-layer-group"></i></div>
-                <h4>Web Arayüz Tasarımı</h4>
-                <p>Karmaşıklıktan uzak, sade ve amaca hizmet eden temiz kod yapısına sahip modern web arayüzleri inşa ediyorum.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon"><i class="fas fa-terminal"></i></div>
-                <h4>Algoritma & Mantık</h4>
-                <p>Yapay zeka şablonlarından uzak durarak, mantığı tamamen optimize edilmiş ve elle yapılandırılmış temiz kodlar yazıyorum.</p>
+        <div class="about-layout">
+            <div class="about-rich-text">
+                <p>Yazılım dünyasına adım atarken ilk hedefim, ezbere dayalı şablonlardan uzak durarak her sistemin çekirdek mantığını öğrenmek oldu. Teknoloji dünyasında fark yaratan şeyin sadece kod yazmak değil, o kodun sunucuda yarattığı etkiyi optimize etmek olduğuna inanıyorum.</p>
+                <p>Şu an aktif olarak JavaScript ekosisteminde, özellikle de asenkron çalışma modellerinde kendimi derinleştiriyorum. Amacım, karmaşık veri akışlarını tek bir hataya yer bırakmadan yönetecek temiz kod (clean code) yapıları geliştirmek.</p>
+                
+                <ul class="focus-list">
+                    <li><i class="fas fa-terminal"></i> Node.js & Çalışma Mantığı</li>
+                    <li><i class="fab fa-discord"></i> Gerçek Zamanlı Bot Mimarisi</li>
+                    <li><i class="fas fa-database"></i> Veri Optimizasyonu</li>
+                    <li><i class="fas fa-code-branch"></i> Git ve Proje Yönetimi</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section id="vision" style="background: radial-gradient(circle at 10% 80%, rgba(56, 189, 248, 0.03) 0%, transparent 40%);">
-        <div class="section-header">
-            <h3>Gelecek</h3>
-            <h2>Gelişim ve Hedefler</h2>
+    <section id="architecture">
+        <div class="section-meta">
+            <span>Teknik Odak</span>
+            <h2>Mimari Çözümler ve Çalışma Alanları</h2>
         </div>
         
-        <div class="grid-cards">
-            <div class="card" style="border-left: 2px solid #38bdf8;">
-                <h4>JavaScript & Node.js</h4>
-                <p>Asenkron programlama mantığında derinleşerek bot altyapılarını sıfır gecikme ile çalıştırmak üzerine odaklanıyorum.</p>
+        <div class="architecture-grid">
+            <div class="arch-card">
+                <div class="card-head"><i class="fab fa-discord"></i></div>
+                <h3>Gelişmiş Bot Altyapıları</h3>
+                <p>Gereksiz bellek kullanımından arındırılmış, olay (event) yönetimini tamamen dinamik olarak kontrol eden performans odaklı Discord bot sistemleri.</p>
             </div>
-            <div class="card" style="border-left: 2px solid #38bdf8;">
-                <h4>Açık Kaynak Kod</h4>
-                <p>Geliştirdiğim yapıları topluluklarla paylaşarak ekosisteme katkıda bulunmayı amaçlıyorum.</p>
+            <div class="arch-card">
+                <div class="card-head"><i class="fas fa-layer-group"></i></div>
+                <h3>Sürdürülebilir Web Projeleri</h3>
+                <p>Gereksiz framework yüklerinden uzak, CSS Grid ve modern web standartları ile inşa edilmiş, hiyerarşisi net kullanıcı arayüzleri.</p>
+            </div>
+            <div class="arch-card">
+                <div class="card-head"><i class="fas fa-shield-halved"></i></div>
+                <h3>Gelecek Planı: Node.js Uzmanlığı</h3>
+                <p>2026 yılı hedeflerim doğrultusunda, backend sistemlerde yüksek trafik kontrolü ve API güvenliği konularında uzmanlaşma süreci.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Alchera. Tüm Hakları Saklıdır. Built with Clean Code.</p>
+        <p>lucialchera.github.io // Built with strict development standards &copy; 2026</p>
     </footer>
 
 </body>
